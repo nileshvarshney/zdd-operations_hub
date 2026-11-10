@@ -1,0 +1,34 @@
+/* Compact, foldable navigation for the customer demo. */
+aside{width:264px;padding:18px 14px 16px;overflow-x:hidden;overflow-y:auto;transition:width .22s ease,padding .22s ease}
+.shell{margin-left:264px;transition:margin-left .22s ease}
+.sidebar-head{display:flex;align-items:center;gap:8px;margin:0 4px 14px;min-height:48px}
+.sidebar-head .brand{flex:1;padding:0 6px;min-width:0}
+.nav-toggle{width:32px;height:32px;padding:0;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--green);font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center}
+.nav-toggle:hover{background:#edf4eb}
+aside nav{display:flex;flex-direction:column;gap:5px}
+.nav-section{margin:0;border:1px solid transparent;border-radius:9px;overflow:hidden}
+.nav-section summary{list-style:none;display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:8px;color:#758477;font-size:9px;letter-spacing:1.5px;font-weight:800;cursor:pointer;user-select:none}
+.nav-section summary::-webkit-details-marker{display:none}
+.nav-section summary:after{content:'⌄';margin-left:auto;font-size:14px;letter-spacing:0;color:#9aa79a;transition:transform .18s ease}
+.nav-section[open] summary{background:#f4f8f2;color:#54745a}
+.nav-section[open] summary:after{transform:rotate(180deg)}
+.section-icon{display:inline-flex;width:19px;height:19px;align-items:center;justify-content:center;border-radius:6px;background:#e7f1e5;color:#4f7f49;font-size:12px;letter-spacing:0}
+.section-name{white-space:nowrap}
+.nav-section .navitem{margin:2px 0;padding:8px 10px;font-size:11px}
+.nav-section .navitem .navicon{font-size:15px}
+body.nav-collapsed aside{width:78px;padding:18px 10px 16px}
+body.nav-collapsed .shell{margin-left:78px}
+body.nav-collapsed .sidebar-head{margin-left:0;margin-right:0;justify-content:center}
+body.nav-collapsed .sidebar-head .brand{flex:0;padding:0}
+body.nav-collapsed .brand>div{display:none}
+body.nav-collapsed .nav-toggle{position:absolute;right:10px;top:76px;width:25px;height:25px;font-size:16px}
+body.nav-collapsed aside nav{margin-top:20px}
+body.nav-collapsed .nav-section summary{justify-content:center;padding:8px 5px}
+body.nav-collapsed .nav-section summary:after{display:none}
+body.nav-collapsed .section-name{display:none}
+body.nav-collapsed .section-icon{width:30px;height:27px}
+body.nav-collapsed .nav-section .navitem{justify-content:center;padding:9px 5px;gap:0}
+body.nav-collapsed .nav-section .navitem>span:not(.navicon){display:none}
+body.nav-collapsed .nav-section .navitem .navicon{width:auto;font-size:17px}
+@media(max-width:1100px){aside{width:232px}.shell{margin-left:232px}body.nav-collapsed aside{width:72px}body.nav-collapsed .shell{margin-left:72px}}
+@media(max-width:750px){aside{position:relative;width:100%;height:auto;padding:14px}.shell{margin:0}body.nav-collapsed aside{width:100%;padding:14px}body.nav-collapsed .shell{margin:0}body.nav-collapsed .sidebar-head .brand>div{display:none}body.nav-collapsed aside nav{margin-top:0}.nav-toggle{position:static!important}aside nav{max-height:430px;overflow:auto}}
