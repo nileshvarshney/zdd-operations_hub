@@ -5,13 +5,13 @@ This folder contains the static demo application for the ZDD end-to-end operatio
 ## Upload to GitHub
 
 1. Create a new GitHub repository.
-2. Upload `index.html`, `app.js`, `style.css`, and `.nojekyll` to the repository root.
+2. Upload all files in this folder, including `index.html`, `app.js`, `style.css`, `logic.css`, `guide.js`, `process-guide-simple.js`, `process-guide.css`, `readiness.js`, `readiness.css`, `architecture.js`, `live.js`, `branding.js`, and `.nojekyll`.
 3. Open **Settings → Pages**.
 4. Under **Build and deployment**, choose **Deploy from a branch**.
 5. Select the `main` branch and the `/ (root)` folder, then save.
 6. Open the GitHub Pages URL shown by GitHub.
 
-The application uses simulated data for demonstration. It does not connect to SAP, CAMSTAR, FSB, LTDS, GTDS, Blue Yonder, databases, or live AI services.
+The application uses simulated data for demonstration. It does not connect to SAP, CAMSTAR, FSB, TIBCO, LTDS, GTDS, Blue Yonder, databases, or live AI services. TIBCO is shown as a probable event-middleware layer behind FSB because it was not explicitly labeled in the supplied diagrams; confirm its exact role before presenting it as a confirmed source.
 
 ## Included demo areas
 
@@ -24,4 +24,8 @@ The application uses simulated data for demonstration. It does not connect to SA
 - Data quality checks
 - Alarm center and resolution workflow
 - Source system health
+- Customer-facing process guide with small stage illustrations
+- Simple semiconductor-wafer example explaining where the platform is used and what problem it solves
+- Live-data architecture explanation and TIBCO event-middleware note
+- Business case, gap analysis report, design feasibility, MRAT/FMEA sign-off, and pilot-to-production rollout pages
 - Configuration pages, reports, audit trail, and administration
