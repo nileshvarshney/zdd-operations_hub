@@ -30,6 +30,7 @@ The application uses simulated data for demonstration. It does not connect to SA
 - Quick finder (Ctrl/⌘ K or /) to jump to any page, lot, alarm, issue or system; Ask Zero side panel from the header
 - Wafer specifications: standard sizes (100–300 mm silicon, 150/200 mm SiC) with SEMI thicknesses, per-product wafer size, thickness and die-per-wafer, plus a calculator; wafer map viewer and quality rules use them
 - Semiconductor controls: wafer & die genealogy (lot split/merge, scribe ID, die trace), outlier screening (PAT / GDBN / SYL-SBL, AEC-Q001/Q002), bin tables with customer codes, map delivery (SINF / SEMI E142 / STDF), holds & MRB, test data integrity, SPC charts and die count across steps
+- Animated data-flow arrows on flow, lineage, architecture and genealogy screens; KPI count-up, self-drawing charts, wafer scan reveal and live status pulses (disabled when reduced motion is set)
 - Solution architecture screen mirroring the customer's numbered ZDD flow (components 1–10), plus a Master data screen
 - Simple semiconductor-wafer example explaining where the platform is used and what problem it solves
 - Live-data architecture explanation and TIBCO event-middleware note

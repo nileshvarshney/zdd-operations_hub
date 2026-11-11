@@ -1,0 +1,89 @@
+/* Animated data-flow arrows: dashes stream along the line and a bright "data packet" travels to the arrow head. */
+:root{--flow:#6d9b68;--flow-hot:#2f7d3e;--flow-glow:#8fd19e}
+
+@keyframes flow-dash{from{background-position:0 50%}to{background-position:24px 50%}}
+@keyframes flow-packet{0%{left:-6%;opacity:0}12%{opacity:1}85%{opacity:1}100%{left:92%;opacity:0}}
+@keyframes flow-dash-y{from{background-position:50% 0}to{background-position:50% 24px}}
+@keyframes flow-packet-y{0%{top:-10%;opacity:0}15%{opacity:1}85%{opacity:1}100%{top:90%;opacity:0}}
+@keyframes flow-pulse{0%,100%{opacity:.55}50%{opacity:1}}
+
+/* Arrow characters (→ ← ↓) inside pages are converted to this element by motion.js */
+.flow-arrow{position:relative;display:inline-block;flex:none!important;width:46px;height:14px;font-size:0!important;color:transparent!important;vertical-align:middle;overflow:visible}
+.flow-arrow i{position:absolute;left:0;right:8px;top:50%;height:2px;margin-top:-1px;background:repeating-linear-gradient(90deg,var(--flow) 0 7px,transparent 7px 12px);background-size:24px 2px;animation:flow-dash .7s linear infinite;border-radius:2px}
+.flow-arrow b{position:absolute;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:var(--flow-hot);box-shadow:0 0 0 3px #8fd19e55,0 0 8px var(--flow-glow);animation:flow-packet 1.6s ease-in-out infinite}
+.flow-arrow:after{content:'';position:absolute;right:0;top:50%;margin-top:-5px;border-left:8px solid var(--flow);border-top:5px solid transparent;border-bottom:5px solid transparent;animation:flow-pulse 1.6s ease-in-out infinite}
+.flow-arrow.rev{transform:scaleX(-1)}
+.flow-arrow.down{width:14px;height:34px}
+.flow-arrow.down i{left:50%;right:auto;top:0;bottom:8px;width:2px;height:auto;margin:0 0 0 -1px;background:repeating-linear-gradient(180deg,var(--flow) 0 7px,transparent 7px 12px);background-size:2px 24px;animation:flow-dash-y .7s linear infinite}
+.flow-arrow.down b{left:50%;margin-left:-4px;animation:flow-packet-y 1.6s ease-in-out infinite}
+.flow-arrow.down:after{right:auto;left:50%;top:auto;bottom:0;margin:0 0 0 -5px;border-left:5px solid transparent;border-right:5px solid transparent;border-top:8px solid var(--flow);border-bottom:0}
+.maprow .flow-arrow,.lineage-map .flow-arrow{margin:0 2px}
+/* Stagger packets so a chain looks like data moving step by step */
+.flow-arrow:nth-of-type(2) b{animation-delay:.4s}.flow-arrow:nth-of-type(3) b{animation-delay:.8s}.flow-arrow:nth-of-type(4) b{animation-delay:1.2s}
+
+/* Arrows drawn with pseudo-elements: stage cards, process guide, rollout phases, "flows into ZDD" */
+.step:not(:last-child):after,.journey-node:not(:last-child):after,.readiness-phase:not(:last-child):after{content:''!important;width:14px;height:2px;font-size:0;background:repeating-linear-gradient(90deg,var(--flow) 0 5px,transparent 5px 8px);background-size:16px 2px;animation:flow-dash .6s linear infinite;top:50%!important}
+.step:not(:last-child):after{right:-17px}
+.fm-in em:after{content:''!important;right:-14px;width:22px;height:2px;background:repeating-linear-gradient(90deg,var(--flow) 0 6px,transparent 6px 10px);background-size:20px 2px;animation:flow-dash .6s linear infinite}
+.fm-in em:before{content:'';position:absolute;right:-16px;top:50%;margin-top:-5px;border-left:7px solid var(--flow);border-top:5px solid transparent;border-bottom:5px solid transparent;z-index:1}
+.fm-in a.green{position:relative;overflow:hidden}
+.fm-in a.green:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,#ffffff99,transparent);transform:translateX(-100%);animation:flow-arrive 2.4s ease-in-out infinite}
+@keyframes flow-arrive{0%,55%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+/* Solution architecture: stage chevrons pulse in sequence */
+.sa-stage:not(:last-child):after{animation:flow-pulse 1.6s ease-in-out infinite}
+.sa-stage:nth-child(2):after{animation-delay:.3s}.sa-stage:nth-child(3):after{animation-delay:.6s}.sa-stage:nth-child(4):after{animation-delay:.9s}
+
+/* Genealogy tree: data flowing down the links */
+.gen-link,.gen-tree>.gen-node:not(.root):after{background:repeating-linear-gradient(180deg,var(--flow) 0 5px,transparent 5px 9px)!important;background-size:2px 18px!important;animation:flow-dash-y .8s linear infinite}
+.gen-children{border-top-style:dashed!important;border-top-color:#9cc495!important}
+
+/* Completed pipeline stages: moving data along the finished segments */
+.track-step.done:before{background:repeating-linear-gradient(90deg,#8fbf8a 0 8px,#cfe6cb 8px 12px)!important;background-size:20px 2px!important;animation:flow-dash 1s linear infinite}
+
+@media (prefers-reduced-motion:reduce){
+  .flow-arrow i,.flow-arrow b,.flow-arrow:after,.step:after,.journey-node:after,.readiness-phase:after,.fm-in em:after,.fm-in a.green:after,.sa-stage:after,.gen-link,.gen-tree>.gen-node:after,.track-step.done:before{animation:none!important}
+  .flow-arrow b{display:none}
+}
+
+/* ---------- Page and component motion ---------- */
+@keyframes fade-up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes grow-x{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes die-in{from{opacity:0}to{opacity:1}}
+@keyframes ping{0%{box-shadow:0 0 0 0 currentColor}70%{box-shadow:0 0 0 6px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@keyframes ring{0%{box-shadow:0 0 0 0 #d9a35a88}70%{box-shadow:0 0 0 8px #d9a35a00}100%{box-shadow:0 0 0 0 #d9a35a00}}
+@keyframes badge{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+@keyframes glow-step{0%,18%,100%{box-shadow:none;border-color:#dfeadd}6%{box-shadow:0 0 0 3px #b9dcb3,0 8px 22px #6d9b6826;border-color:#8eaf8b}}
+@keyframes shimmer{0%,70%{background-position:-160% 0}100%{background-position:260% 0}}
+@keyframes slide-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* Content eases in when a page opens */
+#app>.heading,#app>.kpis,#app>.card,#app>.two,#app>.grid3,#app>.banner,#app>.tabs,#app>.llm-grid,#app>.sa-notes,#app>.section-title{animation:fade-up .45s ease-out both}
+#app>.kpis{animation-delay:.05s}#app>.card,#app>.two,#app>.grid3,#app>.llm-grid{animation-delay:.1s}
+#app>.card~.card,#app>.two~.card,#app>.card~.two{animation-delay:.16s}
+.kpi{animation:fade-up .45s ease-out both}.kpi:nth-child(2){animation-delay:.06s}.kpi:nth-child(3){animation-delay:.12s}.kpi:nth-child(4){animation-delay:.18s}
+
+/* Bars and progress grow from the left */
+.bar-row .bar span,.progress span{transform-origin:left center;animation:grow-x 1s cubic-bezier(.2,.8,.2,1) both}
+.bar-row:nth-child(2) .bar span{animation-delay:.08s}.bar-row:nth-child(3) .bar span{animation-delay:.16s}.bar-row:nth-child(4) .bar span{animation-delay:.24s}.bar-row:nth-child(5) .bar span{animation-delay:.32s}.bar-row:nth-child(6) .bar span{animation-delay:.4s}
+
+/* Live status: dots and badges */
+.dot{color:#77a57088;animation:ping 2s ease-out infinite}
+.dot.amber{color:#d9a35988;animation-duration:1.2s}
+aside .navitem .count,.iconbtn i{animation:badge 2.2s ease-in-out infinite}
+.heat td.bad{animation:flow-pulse 1.4s ease-in-out infinite}
+.track-step.current:after{animation:ring 1.6s ease-out infinite}
+.lineage-node.active{animation:glow-step 3s ease-in-out infinite}
+
+/* The 5-stage journey: a highlight travels from stage to stage */
+.flow .step{animation:glow-step 5s ease-in-out infinite}
+.flow .step:nth-child(2){animation-delay:1s}.flow .step:nth-child(3){animation-delay:2s}.flow .step:nth-child(4){animation-delay:3s}.flow .step:nth-child(5){animation-delay:4s}
+
+/* Ask Zero */
+.ask-btn{background-image:linear-gradient(110deg,transparent 30%,#ffffffb3 50%,transparent 70%);background-size:200% 100%;background-repeat:no-repeat;animation:shimmer 4s ease-in-out infinite}
+.msg{animation:fade-up .35s ease-out both}
+#toast{animation:slide-in .3s ease-out}
+
+@media (prefers-reduced-motion:reduce){
+  #app *,.dot,aside .navitem .count,.iconbtn i,.ask-btn,.msg,#toast{animation:none!important;transition:none!important}
+}
