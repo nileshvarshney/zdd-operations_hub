@@ -32,7 +32,7 @@
   /* Line charts draw themselves; data points pop in left to right */
   function drawCharts(){
     document.querySelectorAll('#app svg').forEach(svg=>{
-      if(svg.dataset.drawn||svg.closest('button,.navicon,.pal-icon,.feed-icon,.sa-wrap'))return;
+      if(svg.dataset.drawn||svg.closest('button,.navicon,.pal-icon,.feed-icon,.sa-wrap,.lf-wrap'))return;
       svg.dataset.drawn='1';
       const vb=svg.viewBox&&svg.viewBox.baseVal;const W=vb&&vb.width||600;
       svg.querySelectorAll('path,polyline').forEach(p=>{
