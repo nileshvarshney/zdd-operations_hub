@@ -8,7 +8,7 @@
     {sec:'OPERATE',label:'Lots & shipments',tabs:[['lots','Lot explorer'],['wafer-map','Wafer maps'],['shipments','Shipment release']]},
     {sec:'OPERATE',label:'Data health',tabs:[['predictions','AI predictions'],['monitoring','Monitoring'],['quality','Quality'],['reconciliation','Reconciliation']]},
     {sec:'OPERATE',label:'Alarms & issues',count:true,tabs:[['alarms','Alarms'],['anomalies','Anomalies'],['issues','Issues'],['capa','Root cause & CAPA'],['handover','Shift handover'],['notifications','Notifications']]},
-    {sec:'CONFIGURE',label:'Setup & catalog',tabs:[['setup','Application setup'],['mappings','Customer maps'],['master-data','Master data'],['products','Products & routes'],['sites','Sites & stations']]},
+    {sec:'CONFIGURE',label:'Setup & catalog',tabs:[['setup','Application setup'],['mappings','Customer maps'],['master-data','Master data'],['products','Products & routes'],['wafer-specs','Wafer specs'],['sites','Sites & stations']]},
     {sec:'CONFIGURE',label:'Rules & controls',tabs:[['checkpoints','Checkpoints & SLAs'],['elements','Critical elements'],['rules','Quality rules'],['contacts','Alarm routing'],['maintenance','Maintenance windows'],['models','AI models']]},
     {sec:'GOVERN',label:'Customers & compliance',tabs:[['customers','Scorecards'],['evidence','Evidence packs'],['approvals','Change approvals'],['reports','Reports'],['report-schedules','Scheduled reports'],['audit','Audit trail']]},
     {sec:'GOVERN',label:'Program',tabs:[['customer-problem','Customer problem'],['business-case','Business case'],['gap-analysis','Gap analysis'],['feasibility','Design feasibility'],['signoff','MRAT & FMEA'],['rollout','Pilot & rollout']]},
