@@ -11,7 +11,7 @@ This folder contains the static demo application for the ZDD end-to-end operatio
 5. Select the `main` branch and the `/ (root)` folder, then save.
 6. Open the GitHub Pages URL shown by GitHub.
 
-The application uses simulated data for demonstration. It does not connect to SAP, CAMSTAR, FSB, TIBCO, LTDS, GTDS, Blue Yonder, databases, or live AI services. TIBCO is shown as a probable event-middleware layer behind FSB because it was not explicitly labeled in the supplied diagrams; confirm its exact role before presenting it as a confirmed source.
+The application uses simulated data for demonstration. It does not connect to SAP, CAMSTAR, FSB, TIBCO, LTDS, GTDS, Blue Yonder, databases, or live AI services. TIBCO is shown as a source system: the event-messaging layer that routes FSB lot and station events to ZDD.
 
 ## Included demo areas
 

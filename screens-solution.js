@@ -10,7 +10,7 @@
     ['Alarm management','alarms',['Send late-data and data-quality flags to site users, IT and the business owner.']]
   ];
   const parts=[
-    ['1','FSB events → ZDD DB','Lot movement events loaded with lot, PUID, station and time.','events','Event processing'],
+    ['1','FSB events → ZDD DB','Lot movement events, routed through TIBCO, loaded with lot, PUID, station and time.','events','Event processing'],
     ['2','Master data','Scheduled load of customer requirements, product mapping and PUID rules.','master-data','Master data'],
     ['3','ZDD data predict','Arrival-time and defect predictions written back to ZDD.','predictions','AI predictions'],
     ['4','AI agent (Vero-wchat LLM)','Explains exceptions and recommends the next action. Can also use Claude, GPT, Gemini, Llama or Mistral.','assistant','Ask Zero · AI models'],
@@ -26,7 +26,7 @@
     +card('ZDD processing flow','Select any stage or numbered component to open its screen.',`<div class="sa-wrap">
       <div class="sa-stages">${stages.map(([s,r],i)=>`<a class="sa-stage" href="#${r}"><span>${i+1}</span>${s}</a>`).join('')}</div>
       <div class="sa-grid">
-        <div class="sa-col">${src('FSB','system/2')}${comp(1,'Lot events → ZDD DB','start · end · station','events')}${comp(2,'Master data','scheduled ⏱','master-data')}</div>
+        <div class="sa-col"><div class="sa-pair">${src('FSB','system/2')}${src('TIBCO','system/8')}</div>${comp(1,'Lot events → ZDD DB','start · end · station','events')}${comp(2,'Master data','scheduled ⏱','master-data')}</div>
         <div class="sa-col">${comp(5,'ODS / Databricks','history','system/7','src')}${comp(4,'AI agent','Vero-wchat LLM + others','models')}${comp(3,'ZDD data predict','arrival & defect','predictions','core')}</div>
         <div class="sa-col"><div class="sa-pair">${src('LTDS','system/4')}${src('GTDS','system/5')}</div>${comp(6,'ZDD data monitor','scheduled ⏱','monitoring','core')}</div>
         <div class="sa-col">${comp(7,'Critical data elements','configuration','elements')}${comp(8,'ZDD data Q-check','quantity · abnormality','quality','core')}</div>
@@ -36,7 +36,7 @@
     </div>`)
     +`<div class="sa-notes">${stages.map(([s,,notes],i)=>`<div class="sa-note"><b>${i+1}. ${s}</b><ul>${notes.map(n=>`<li>${n}</li>`).join('')}</ul></div>`).join('')}</div>`
     +card('Component reference','Each numbered component and the screen that shows it.',table(['#','Component','What it does','Screen'],parts.map(p=>[p[0],p[1],p[2],p[4]]),"navigate(['events','master-data','predictions','assistant','system/7','monitoring','elements','quality','contacts','alarms'][$i])",false))
-    +card('Source systems','Systems that feed ZDD, as in your integration diagram.',`<div class="pad" style="padding-top:0">${[['SAP','Orders and shipment master','system/0'],['CAMSTAR','Lot and station movement','system/1'],['Blue Yonder','Planning and shipment context','system/3'],['FSB','Map data transaction and lot-move events','system/2'],['Integration scripts','Map data availability','system/6'],['LTDS','Local test data · map availability','system/4'],['GTDS','Global test data · shipment information and map availability check','system/5'],['ODS / Databricks','History for AI prediction','system/7']].map(([k,v,r])=>`<a class="statline" href="#${r}" style="text-decoration:none;color:inherit"><span>${k}</span><b>${v} ↗</b></a>`).join('')}</div>`);
+    +card('Source systems','Systems that feed ZDD, as in your integration diagram.',`<div class="pad" style="padding-top:0">${[['SAP','Orders and shipment master','system/0'],['CAMSTAR','Lot and station movement','system/1'],['Blue Yonder','Planning and shipment context','system/3'],['FSB','Map data transaction and lot-move events','system/2'],['TIBCO','Event messaging · routes FSB events to ZDD','system/8'],['Integration scripts','Map data availability','system/6'],['LTDS','Local test data · map availability','system/4'],['GTDS','Global test data · shipment information and map availability check','system/5'],['ODS / Databricks','History for AI prediction','system/7']].map(([k,v,r])=>`<a class="statline" href="#${r}" style="text-decoration:none;color:inherit"><span>${k}</span><b>${v} ↗</b></a>`).join('')}</div>`);
   }
 
   const masters=[['Customer data requirements','ZDD configuration','Every 15 minutes','10:30','3 customers · 25 elements each','Healthy'],['Product mapping','SAP material master','Hourly','10:00','5 products · 3 routes','Healthy'],['PUID patterns','ZDD configuration','Every 15 minutes','10:30','5 patterns','Healthy'],['Station & route master','CAMSTAR','Hourly','10:00','34 stations · 11 checkpoints','Healthy'],['Shipment master','SAP / GTDS','Every 30 minutes','10:15','29 shipments this week','Delayed']];

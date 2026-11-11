@@ -127,11 +127,11 @@
 
   /* Data freshness */
   function freshness(){
-    const srcs=['SAP','CAMSTAR','FSB','LTDS','GTDS','Blue Yonder','ODS'];
-    const data={'ATKH · Austin':[2,1,.2,18,3,4,6],'ATBK · Bangkok':[3,1,.2,4,2,5,6],'ATGD · Global data':[2,2,.3,null,3,4,7],'ATPN · Penang':[4,2,.4,6,9,5,8]};
+    const srcs=['SAP','CAMSTAR','FSB','TIBCO','LTDS','GTDS','Blue Yonder','ODS'];
+    const data={'ATKH · Austin':[2,1,.2,.1,18,3,4,6],'ATBK · Bangkok':[3,1,.2,.1,4,2,5,6],'ATGD · Global data':[2,2,.3,.1,null,3,4,7],'ATPN · Penang':[4,2,.4,.2,6,9,5,8]};
     const cls=v=>v===null?'na':v>12?'bad':v>7?'warn':'ok',fmt=v=>v===null?'n/a':v<1?Math.round(v*60)+' s':v+' min';
     return title('Data freshness','Minutes since the last record from every source system at every site.',btn('Refresh now',"audit('Freshness refreshed');toast('Freshness refreshed · 10:41')",true))
-    +kpis([['Feeds monitored','27','7 sources × 4 sites'],['Fresh','24','Within threshold'],['Stale','2','Above warning threshold',true],['Critical','1','LTDS at ATKH',true]])
+    +kpis([['Feeds monitored','31','8 sources × 4 sites'],['Fresh','28','Within threshold'],['Stale','2','Above warning threshold',true],['Critical','1','LTDS at ATKH',true]])
     +card('Freshness heatmap','Green within threshold · amber above 7 minutes · red above 12 minutes.',`<div style="overflow-x:auto"><table class="heat"><thead><tr><th>Site</th>${srcs.map(s=>`<th>${s}</th>`).join('')}</tr></thead><tbody>${Object.entries(data).map(([site,vals])=>`<tr><td>${site}</td>${vals.map((v,k)=>`<td class="${cls(v)}" title="${srcs[k]} · ${site}">${fmt(v)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`)
     +`<div class="two">${card('Stale feeds','Feeds above threshold with the owner notified.',table(['Feed','Site','Last record','Threshold','Owner','Status'],[['LTDS wafer maps','ATKH','18 min ago','10 min','Site operations','Critical'],['GTDS test summary','ATPN','9 min ago','7 min','IT support','Warning'],['ODS history sync','ATPN','8 min ago','7 min','Data engineering','Warning']],"navigate('system/4')",false))}${card('Thresholds','Set per source in Checkpoints & SLAs.',`<div class="pad" style="padding-top:0">${[['FSB events','30 seconds'],['CAMSTAR movement','5 minutes'],['LTDS / GTDS maps','10 minutes'],['SAP / Blue Yonder','15 minutes']].map(([k,v])=>`<div class="statline"><span>${k}</span><b>${v}</b></div>`).join('')}<div class="formactions"><a class="button" href="#checkpoints">Edit thresholds</a></div></div>`)}</div>`;
   }
