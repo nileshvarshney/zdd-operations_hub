@@ -1,34 +1,73 @@
-/* Compact, foldable navigation for the customer demo. */
-aside{width:264px;padding:18px 14px 16px;overflow-x:hidden;overflow-y:auto;transition:width .22s ease,padding .22s ease}
-.shell{margin-left:264px;transition:margin-left .22s ease}
-.sidebar-head{display:flex;align-items:center;gap:8px;margin:0 4px 14px;min-height:48px}
-.sidebar-head .brand{flex:1;padding:0 6px;min-width:0}
-.nav-toggle{width:32px;height:32px;padding:0;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--green);font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center}
-.nav-toggle:hover{background:#edf4eb}
-aside nav{display:flex;flex-direction:column;gap:5px}
-.nav-section{margin:0;border:1px solid transparent;border-radius:9px;overflow:hidden}
-.nav-section summary{list-style:none;display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:8px;color:#758477;font-size:9px;letter-spacing:1.5px;font-weight:800;cursor:pointer;user-select:none}
+/* Left navigation: deep-green panel, grouped and foldable. */
+aside{position:fixed;inset:0 auto 0 0;width:260px;padding:0;display:flex;flex-direction:column;background:linear-gradient(180deg,#183a2b 0%,#14301f 100%);border-right:0;color:#d6e4d9;overflow:hidden;transition:width .22s ease;z-index:20}
+.shell{margin-left:260px;transition:margin-left .22s ease}
+
+/* Brand */
+.sidebar-head{display:flex;align-items:center;gap:8px;padding:20px 16px 18px 20px;border-bottom:1px solid #ffffff14;min-height:76px}
+.sidebar-head .brand{flex:1;min-width:0;display:flex;align-items:center;gap:11px;padding:0;color:#fff;font:800 22px Manrope,'DM Sans',Arial,sans-serif;letter-spacing:-.5px;text-decoration:none}
+.sidebar-head .brand em{flex:none;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;padding:0;border-radius:10px;background:#7fc28e;color:#123020;font-style:normal;font-size:19px;box-shadow:inset 0 -2px 0 #0000001a}
+.sidebar-head .brand>div{line-height:1.05;white-space:nowrap}
+.sidebar-head .brand small{display:block;margin-top:4px;font:600 9px 'DM Sans',Arial,sans-serif;letter-spacing:2.2px;color:#9fbca8}
+.nav-toggle{flex:none;width:28px;height:28px;padding:0;border:1px solid #ffffff22;border-radius:8px;background:#ffffff0d;color:#cfe1d3;font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.nav-toggle:hover{background:#ffffff1f;color:#fff}
+
+/* Groups */
+aside nav{flex:1;overflow-y:auto;overflow-x:hidden;padding:12px 12px 16px;display:flex;flex-direction:column;gap:2px;scrollbar-width:thin;scrollbar-color:#ffffff26 transparent}
+.nav-section{margin:0}
+.nav-section summary{list-style:none;display:flex;align-items:center;padding:12px 10px 6px;color:#8fac98;font-size:10px;font-weight:700;letter-spacing:1.6px;cursor:pointer;user-select:none;border-radius:6px}
 .nav-section summary::-webkit-details-marker{display:none}
-.nav-section summary:after{content:'⌄';margin-left:auto;font-size:14px;letter-spacing:0;color:#9aa79a;transition:transform .18s ease}
-.nav-section[open] summary{background:#f4f8f2;color:#54745a}
-.nav-section[open] summary:after{transform:rotate(180deg)}
-.section-icon{display:inline-flex;width:19px;height:19px;align-items:center;justify-content:center;border-radius:6px;background:#e7f1e5;color:#4f7f49;font-size:12px;letter-spacing:0}
+.nav-section summary:after{content:'';margin-left:auto;width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);transition:transform .18s ease;opacity:.8}
+.nav-section[open] summary:after{transform:rotate(45deg) translate(-2px,-2px)}
+.nav-section summary:hover{color:#d6e4d9}
 .section-name{white-space:nowrap}
-.nav-section .navitem{margin:2px 0;padding:8px 10px;font-size:11px}
-.nav-section .navitem .navicon{font-size:15px}
-body.nav-collapsed aside{width:78px;padding:18px 10px 16px}
-body.nav-collapsed .shell{margin-left:78px}
-body.nav-collapsed .sidebar-head{margin-left:0;margin-right:0;justify-content:center}
-body.nav-collapsed .sidebar-head .brand{flex:0;padding:0}
-body.nav-collapsed .brand>div{display:none}
-body.nav-collapsed .nav-toggle{position:absolute;right:10px;top:76px;width:25px;height:25px;font-size:16px}
-body.nav-collapsed aside nav{margin-top:20px}
-body.nav-collapsed .nav-section summary{justify-content:center;padding:8px 5px}
+
+/* Items */
+.nav-items{display:flex;flex-direction:column;gap:1px;padding-bottom:4px}
+aside .navitem{position:relative;display:flex;align-items:center;gap:11px;margin:0;padding:8px 10px;border-radius:8px;color:#c4d6c9;font-size:13px;font-weight:500;white-space:nowrap;text-decoration:none;transition:background .12s ease,color .12s ease}
+aside .navitem:hover{background:#ffffff12;color:#fff}
+aside .navitem.active{background:#ffffff1c;color:#fff;font-weight:600}
+aside .navitem.active:before{content:'';position:absolute;left:-12px;top:7px;bottom:7px;width:3px;border-radius:0 3px 3px 0;background:#8fd19e}
+aside .navicon{flex:none;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;color:#93b39d}
+aside .navitem:hover .navicon,aside .navitem.active .navicon{color:#a8e0b4}
+.navtext{overflow:hidden;text-overflow:ellipsis}
+aside .navitem .count{margin-left:auto;min-width:20px;padding:1px 6px;border-radius:10px;background:#e0794f;color:#fff;font-size:10px;font-weight:700;text-align:center}
+
+/* Footer */
+.sidebar-foot{display:flex;align-items:center;gap:10px;padding:14px 18px;border-top:1px solid #ffffff14;white-space:nowrap}
+.foot-avatar{flex:none;width:32px;height:32px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#2f5a43;color:#e3f1e6;font-size:11px;font-weight:700}
+.foot-text{min-width:0;line-height:1.25}
+.foot-text b{display:block;color:#fff;font-size:12px;font-weight:600}
+.foot-text small{display:block;color:#8fac98;font-size:10.5px}
+
+/* Collapsed rail */
+body.nav-collapsed aside{width:72px}
+body.nav-collapsed .shell{margin-left:72px}
+body.nav-collapsed .sidebar-head{flex-direction:column;justify-content:center;padding:16px 0 12px;gap:10px}
+body.nav-collapsed .sidebar-head .brand{flex:none}
+body.nav-collapsed .sidebar-head .brand>div{display:none}
+body.nav-collapsed aside nav{padding:8px 10px}
+body.nav-collapsed .nav-section summary{justify-content:center;padding:8px 0;font-size:0}
+body.nav-collapsed .nav-section summary:before{content:'';display:block;width:22px;height:1px;background:#ffffff26}
 body.nav-collapsed .nav-section summary:after{display:none}
-body.nav-collapsed .section-name{display:none}
-body.nav-collapsed .section-icon{width:30px;height:27px}
-body.nav-collapsed .nav-section .navitem{justify-content:center;padding:9px 5px;gap:0}
-body.nav-collapsed .nav-section .navitem>span:not(.navicon){display:none}
-body.nav-collapsed .nav-section .navitem .navicon{width:auto;font-size:17px}
+body.nav-collapsed .nav-section .nav-items{display:flex!important}
+body.nav-collapsed aside .navitem{justify-content:center;padding:10px 0;gap:0}
+body.nav-collapsed aside .navitem.active:before{left:-10px}
+body.nav-collapsed .navtext{display:none}
+body.nav-collapsed aside .navitem .count{position:absolute;top:3px;right:6px;min-width:0;padding:0 4px;font-size:9px}
+body.nav-collapsed .sidebar-foot{justify-content:center;padding:14px 0}
+body.nav-collapsed .foot-text{display:none}
+
 @media(max-width:1100px){aside{width:232px}.shell{margin-left:232px}body.nav-collapsed aside{width:72px}body.nav-collapsed .shell{margin-left:72px}}
-@media(max-width:750px){aside{position:relative;width:100%;height:auto;padding:14px}.shell{margin:0}body.nav-collapsed aside{width:100%;padding:14px}body.nav-collapsed .shell{margin:0}body.nav-collapsed .sidebar-head .brand>div{display:none}body.nav-collapsed aside nav{margin-top:0}.nav-toggle{position:static!important}aside nav{max-height:430px;overflow:auto}}
+@media(max-width:750px){
+  aside,body.nav-collapsed aside{position:relative;width:100%;height:auto;max-height:none}
+  .shell,body.nav-collapsed .shell{margin:0}
+  aside nav{max-height:60vh}
+  body.nav-collapsed aside nav,body.nav-collapsed .sidebar-foot{display:none}
+  body.nav-collapsed .sidebar-head{flex-direction:row;justify-content:space-between;padding:14px 16px}
+  body.nav-collapsed .sidebar-head .brand>div{display:block}
+}
+
+/* Record detail dialog */
+.record-grid{margin:6px 0 4px}
+.record-grid .statline b{font-weight:600;text-align:right;max-width:65%}
+dialog .stage-label{margin-bottom:6px}

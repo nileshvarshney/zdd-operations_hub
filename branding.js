@@ -35,7 +35,7 @@ function cleanDemoBranding(){
   ];
   const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
   const nodes=[];let node;while(node=walker.nextNode())nodes.push(node);
-  nodes.forEach(n=>{let value=n.nodeValue;replacements.forEach(([from,to])=>{value=value.replaceAll(from,to)});value=value.replaceAll('OPERATIONS WORKSPACE','OPERATIONS').replaceAll('WORKSPACE','').replace(/\s{2,}/g,' ').trim();if(value!==n.nodeValue)n.nodeValue=value});
+  nodes.forEach(n=>{let value=n.nodeValue;replacements.forEach(([from,to])=>{value=value.replaceAll(from,to)});value=value.replaceAll('OPERATIONS WORKSPACE','OPERATIONS').replaceAll('WORKSPACE','').replace(/ {2,}/g,' ');if(value!==n.nodeValue)n.nodeValue=value});
   const avatar=document.querySelector('.avatar');if(avatar)avatar.textContent='HO';
 }
 audit=function(t){state.audit.unshift([new Date().toLocaleTimeString(),'Herpreet Oberoi',t,'Application']);save()};

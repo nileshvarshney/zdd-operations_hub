@@ -1,11 +1,11 @@
 /* Foldable, grouped navigation for the static demo. */
 (function(){
   const storageKey='zddNavCollapsed';
-  const icons={HOME:'⌂',OPERATIONS:'◉',CONFIGURATION:'⚙',MANAGEMENT:'▤','DELIVERY READINESS':'✓'};
+  const icons={HOME:'⌂','DATA DELIVERY':'⇄',CONTROLS:'⚙',OPERATIONS:'◉',GOVERNANCE:'▥',ADMINISTRATION:'♙',CONFIGURATION:'⚙',MANAGEMENT:'▤','DELIVERY READINESS':'✓'};
   const normalLabel=value=>value.trim().toUpperCase()==='WORKSPACE'?'HOME':value.trim();
 
   function setCollapsed(value){
-    document.body.classList.toggle('nav-collapsed',value);
+    document.body.classList.toggle('nav-collapsed',value);if(value)document.querySelectorAll('.nav-section').forEach(d=>d.open=true);
     try{localStorage.setItem(storageKey,value?'1':'0')}catch(e){}
     const toggle=document.querySelector('.nav-toggle');
     if(toggle){toggle.textContent=value?'›':'‹';toggle.setAttribute('aria-label',value?'Expand navigation':'Collapse navigation');toggle.title=value?'Expand navigation':'Collapse navigation'}
@@ -64,6 +64,9 @@
 
   window.enhanceNavigation=enhance;
   window.toggleSidebar=()=>setCollapsed(!document.body.classList.contains('nav-collapsed'));
-  enhance();
   window.addEventListener('hashchange',()=>setTimeout(enhance,40));
+  /* All screen scripts are loaded: render once and run every page hook, exactly as on a normal click. */
+  render();
+  window.dispatchEvent(new HashChangeEvent('hashchange'));
+  enhance();
 })();
