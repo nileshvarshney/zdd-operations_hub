@@ -205,3 +205,14 @@ table.static tbody tr:hover,.matrix tbody tr:hover,.heat tbody tr:hover{backgrou
 .gen-node.leaf{background:#eef6ec;border-color:#cfe0cb}
 /* SPC */
 .spc-chart svg{width:100%;height:auto;display:block}
+
+/* Integration flow map */
+.flowmap .fm-label{font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:#8a978c;margin:4px 0 2px}
+.flowmap .fm-label:not(:first-child){margin-top:20px}
+.flowmap .fm-note{flex:none!important;font-size:11px;color:#8a978c;font-style:italic}
+.fm-in{display:grid;grid-template-columns:minmax(120px,1fr) minmax(160px,1.6fr) minmax(130px,1fr);gap:10px;align-items:center;margin:8px 0}
+.fm-in a{text-align:center;padding:12px 10px;background:#eef5f8;border:1px solid #d5e6ec;border-radius:8px;color:#4e88a1;font-weight:600;font-size:12px}
+.fm-in a.green{background:#e6f1e2;color:#4d7e45;border-color:#cadfc2}
+.fm-in em{font-style:normal;font-size:11.5px;color:#5f7064;text-align:center;position:relative;padding:0 14px}
+.fm-in em:after{content:'→';position:absolute;right:-6px;top:50%;transform:translateY(-50%);color:#9aa98e}
+.conn.direct{color:#3f6f3d}.conn.up{color:#9b6f2c}
