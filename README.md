@@ -5,7 +5,7 @@ This folder contains the static demo application for the ZDD end-to-end operatio
 ## Upload to GitHub
 
 1. Create a new GitHub repository.
-2. Upload all files in this folder, including `index.html`, the JavaScript and CSS files (including `icons.js`), and `.nojekyll`.
+2. Upload all files in this folder, including `index.html`, the JavaScript and CSS files (including `icons.js`, `screens.css` and the three `screens-*.js` files), and `.nojekyll`.
 3. Open **Settings → Pages**.
 4. Under **Build and deployment**, choose **Deploy from a branch**.
 5. Select the `main` branch and the `/ (root)` folder, then save.
@@ -39,5 +39,11 @@ The application uses simulated data for demonstration. It does not connect to SA
 - Issue management with owner, priority and due-date entry
 - Notification testing and delivery history
 - Visible setup and source-connection forms; the walkthrough names the exact fields and buttons to use
+- Sign-in screen, global search, inbox, executive summary and the Ask Zero AI assistant
+- Wafer map viewer, shipment release gate, data freshness heatmap, failed events & replay, pipeline detail
+- Products & routes, sites & stations, maintenance windows, AI model detail
+- Shift handover, root cause & CAPA, issue detail, anomaly detail
+- Customer scorecards (with customer detail), change approvals, evidence packs, scheduled reports
+- Roles & permissions, integrations & API, security & retention, my profile, help & release notes
 
 The screens are designed as the intended operational application surface. The included records and actions are local sample records, so no external system is changed by this package.

@@ -26,6 +26,7 @@ aside nav{flex:1;overflow-y:auto;overflow-x:hidden;padding:12px 12px 16px;displa
 aside .navitem{position:relative;display:flex;align-items:center;gap:11px;margin:0;padding:8px 10px;border-radius:8px;color:#c4d6c9;font-size:13px;font-weight:500;white-space:nowrap;text-decoration:none;transition:background .12s ease,color .12s ease}
 aside .navitem:hover{background:#ffffff12;color:#fff}
 aside .navitem.active{background:#ffffff1c;color:#fff;font-weight:600}
+aside .sidebar-foot:hover{background:#ffffff0d}
 aside .navitem.active:before{content:'';position:absolute;left:-12px;top:7px;bottom:7px;width:3px;border-radius:0 3px 3px 0;background:#8fd19e}
 aside .navicon{flex:none;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;color:#93b39d}
 aside .navitem:hover .navicon,aside .navitem.active .navicon{color:#a8e0b4}
@@ -33,7 +34,7 @@ aside .navitem:hover .navicon,aside .navitem.active .navicon{color:#a8e0b4}
 aside .navitem .count{margin-left:auto;min-width:20px;padding:1px 6px;border-radius:10px;background:#e0794f;color:#fff;font-size:10px;font-weight:700;text-align:center}
 
 /* Footer */
-.sidebar-foot{display:flex;align-items:center;gap:10px;padding:14px 18px;border-top:1px solid #ffffff14;white-space:nowrap}
+.sidebar-foot{text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px;padding:14px 18px;border-top:1px solid #ffffff14;white-space:nowrap}
 .foot-avatar{flex:none;width:32px;height:32px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#2f5a43;color:#e3f1e6;font-size:11px;font-weight:700}
 .foot-text{min-width:0;line-height:1.25}
 .foot-text b{display:block;color:#fff;font-size:12px;font-weight:600}
