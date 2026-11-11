@@ -1,11 +1,11 @@
-# ZDD Operations Hub — GitHub Pages Demo
+# Zero Operations Hub — GitHub Pages Demo
 
 This folder contains the static demo application for the ZDD end-to-end operations flow.
 
 ## Upload to GitHub
 
 1. Create a new GitHub repository.
-2. Upload all files in this folder, including `index.html`, `app.js`, `style.css`, `logic.css`, `guide.js`, `process-guide-simple.js`, `process-guide.css`, `readiness.js`, `readiness.css`, `architecture.js`, `live.js`, `branding.js`, `usage.js`, `usage.css`, `navigation.js`, `navigation.css`, and `.nojekyll`.
+2. Upload all files in this folder, including `index.html`, the JavaScript and CSS files, `application-pages.js`, and `.nojekyll`.
 3. Open **Settings → Pages**.
 4. Under **Build and deployment**, choose **Deploy from a branch**.
 5. Select the `main` branch and the `/ (root)` folder, then save.
@@ -26,8 +26,19 @@ The application uses simulated data for demonstration. It does not connect to SA
 - Source system health
 - Customer-facing process guide with small stage illustrations
 - **How to use this tool** walkthrough with the recommended demo sequence and page map
+- Application setup screen with source, mapping, checkpoint, quality, AI and alarm configuration
 - Foldable, grouped left navigation for a compact customer presentation
 - Simple semiconductor-wafer example explaining where the platform is used and what problem it solves
 - Live-data architecture explanation and TIBCO event-middleware note
 - Business case, gap analysis report, design feasibility, MRAT/FMEA sign-off, and pilot-to-production rollout pages
 - Configuration pages, reports, audit trail, and administration
+- Customer problem framing screen before the business case
+- Pipeline health with create-pipeline form and run action
+- Data lineage with source-to-target handoff form
+- Reconciliation with expected-versus-actual quantity and field checks
+- Anomaly investigation queue with issue handoff
+- Issue management with owner, priority and due-date entry
+- Notification testing and delivery history
+- Visible setup and source-connection forms; the walkthrough names the exact fields and buttons to use
+
+The screens are designed as the intended operational application surface. The included records and actions are local sample records, so no external system is changed by this package.
