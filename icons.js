@@ -1,5 +1,13 @@
 /* Consistent line icons for the left navigation (24px grid, stroke = currentColor). */
 const navIconPaths={
+  genealogy:'<circle cx="12" cy="4.5" r="2"/><circle cx="6" cy="19.5" r="2"/><circle cx="18" cy="19.5" r="2"/><path d="M12 6.5v5M6 17.5V14h12v3.5M12 11.5V14"/>',
+  'die-flow':'<rect x="3" y="9" width="4" height="6" rx="1"/><rect x="10" y="9" width="4" height="6" rx="1"/><rect x="17" y="9" width="4" height="6" rx="1"/><path d="M7 12h3M14 12h3"/>',
+  'map-delivery':'<path d="M4 7l8-4 8 4-8 4z"/><path d="M4 7v10l8 4 8-4V7"/><path d="M16 15l3 2-3 2" />',
+  'test-data':'<rect x="4" y="4" width="16" height="12" rx="2"/><path d="M8 20h8M12 16v4M7 11l2.5-3 2.5 3 2.5-4L17 11"/>',
+  outliers:'<circle cx="7" cy="14" r="1.5"/><circle cx="10" cy="12" r="1.5"/><circle cx="13" cy="13" r="1.5"/><circle cx="9" cy="16" r="1.5"/><circle cx="18" cy="6" r="2.2"/><path d="M3 20h18" opacity=".5"/>',
+  spc:'<path d="M3 6h18M3 18h18" stroke-dasharray="2 2" opacity=".6"/><path d="M3 12h3l2-3 3 5 3-4 2 2 2-6 3 3"/>',
+  bins:'<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><path d="M15 15h4M15 19h4"/>',
+  holds:'<rect x="5" y="4" width="4" height="16" rx="1"/><rect x="15" y="4" width="4" height="16" rx="1"/>',
   'wafer-specs':'<circle cx="12" cy="11" r="8"/><path d="M10 19h4"/><path d="M4 11h16M12 3v16" opacity=".5"/>',
   architecture:'<rect x="3" y="3" width="6" height="5" rx="1"/><rect x="15" y="3" width="6" height="5" rx="1"/><rect x="9" y="16" width="6" height="5" rx="1"/><path d="M6 8v3h12V8M12 11v5"/>',
   'master-data':'<ellipse cx="12" cy="6" rx="7" ry="2.5"/><path d="M5 6v6c0 1.4 3.1 2.5 7 2.5M19 6v4"/><circle cx="17.5" cy="16.5" r="4"/><path d="M17.5 14.5v2l1.3 1"/>',

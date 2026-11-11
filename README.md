@@ -1,4 +1,4 @@
-# Zero Operations Hub — GitHub Pages Demo
+# Zero Digital Defects — GitHub Pages Demo
 
 This folder contains the static demo application for the ZDD end-to-end operations flow.
 
@@ -29,6 +29,7 @@ The application uses simulated data for demonstration. It does not connect to SA
 - Compact left menu: 11 items in 5 sections (one open at a time); related screens appear as tabs at the top of each page
 - Quick finder (Ctrl/⌘ K or /) to jump to any page, lot, alarm, issue or system; Ask Zero side panel from the header
 - Wafer specifications: standard sizes (100–300 mm silicon, 150/200 mm SiC) with SEMI thicknesses, per-product wafer size, thickness and die-per-wafer, plus a calculator; wafer map viewer and quality rules use them
+- Semiconductor controls: wafer & die genealogy (lot split/merge, scribe ID, die trace), outlier screening (PAT / GDBN / SYL-SBL, AEC-Q001/Q002), bin tables with customer codes, map delivery (SINF / SEMI E142 / STDF), holds & MRB, test data integrity, SPC charts and die count across steps
 - Solution architecture screen mirroring the customer's numbered ZDD flow (components 1–10), plus a Master data screen
 - Simple semiconductor-wafer example explaining where the platform is used and what problem it solves
 - Live-data architecture explanation and TIBCO event-middleware note

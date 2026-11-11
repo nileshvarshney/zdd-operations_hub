@@ -72,3 +72,18 @@ body.nav-collapsed .foot-caret{display:none}
 .zp-input input{flex:1}
 @media(max-width:1100px){.ask-btn{padding:0 10px}}
 body.nav-collapsed aside{overflow:visible}
+
+/* Compact page top: breadcrumb in header, no label line above titles */
+header{height:60px}
+header .crumb{display:flex;align-items:center;gap:8px;font-size:12.5px;color:#7d8982;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+header .crumb b{color:var(--ink);font-weight:700}
+header .crumb i{font-style:normal;color:#b5c0b7}
+header .crumb>*{padding:0!important;margin:0!important;background:none!important;border:0!important}
+.shell main{padding-top:18px}
+.hub-bar{margin:0 0 18px}
+.heading{margin-bottom:20px}
+.heading h1{margin:0 0 4px}
+.heading p{font-size:12.5px;line-height:1.5}
+.eyebrow{display:none}
+@media(min-width:1500px){.shell main{padding-top:22px}}
+@media(max-width:750px){header .crumb{display:none}}

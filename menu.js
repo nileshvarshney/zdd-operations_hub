@@ -4,12 +4,12 @@
   const hubs=[
     {sec:'HOME',label:'Overview',tabs:[['overview','Operations'],['executive','Executive summary']]},
     {sec:'HOME',label:'How it works',tabs:[['flow','End-to-end flow'],['architecture','Solution architecture'],['process-guide','Process guide']]},
-    {sec:'OPERATE',label:'Data delivery',tabs:[['systems','Data systems'],['pipelines','Pipelines'],['freshness','Freshness'],['events','Event processing'],['dead-letter','Failed events'],['lineage','Lineage']]},
-    {sec:'OPERATE',label:'Lots & shipments',tabs:[['lots','Lot explorer'],['wafer-map','Wafer maps'],['shipments','Shipment release']]},
-    {sec:'OPERATE',label:'Data health',tabs:[['predictions','AI predictions'],['monitoring','Monitoring'],['quality','Quality'],['reconciliation','Reconciliation']]},
-    {sec:'OPERATE',label:'Alarms & issues',count:true,tabs:[['alarms','Alarms'],['anomalies','Anomalies'],['issues','Issues'],['capa','Root cause & CAPA'],['handover','Shift handover'],['notifications','Notifications']]},
+    {sec:'OPERATE',label:'Data delivery',tabs:[['systems','Data systems'],['pipelines','Pipelines'],['freshness','Freshness'],['events','Event processing'],['dead-letter','Failed events'],['map-delivery','Map delivery'],['lineage','Lineage']]},
+    {sec:'OPERATE',label:'Lots & shipments',tabs:[['lots','Lot explorer'],['genealogy','Genealogy'],['wafer-map','Wafer maps'],['die-flow','Die count by step'],['shipments','Shipment release']]},
+    {sec:'OPERATE',label:'Data health',tabs:[['predictions','AI predictions'],['monitoring','Monitoring'],['quality','Quality'],['reconciliation','Reconciliation'],['test-data','Test data'],['outliers','Outlier screening'],['spc','SPC charts']]},
+    {sec:'OPERATE',label:'Alarms & issues',count:true,tabs:[['alarms','Alarms'],['anomalies','Anomalies'],['issues','Issues'],['holds','Holds & MRB'],['capa','Root cause & CAPA'],['handover','Shift handover'],['notifications','Notifications']]},
     {sec:'CONFIGURE',label:'Setup & catalog',tabs:[['setup','Application setup'],['mappings','Customer maps'],['master-data','Master data'],['products','Products & routes'],['wafer-specs','Wafer specs'],['sites','Sites & stations']]},
-    {sec:'CONFIGURE',label:'Rules & controls',tabs:[['checkpoints','Checkpoints & SLAs'],['elements','Critical elements'],['rules','Quality rules'],['contacts','Alarm routing'],['maintenance','Maintenance windows'],['models','AI models']]},
+    {sec:'CONFIGURE',label:'Rules & controls',tabs:[['checkpoints','Checkpoints & SLAs'],['elements','Critical elements'],['rules','Quality rules'],['bins','Bin tables'],['contacts','Alarm routing'],['maintenance','Maintenance windows'],['models','AI models']]},
     {sec:'GOVERN',label:'Customers & compliance',tabs:[['customers','Scorecards'],['evidence','Evidence packs'],['approvals','Change approvals'],['reports','Reports'],['report-schedules','Scheduled reports'],['audit','Audit trail']]},
     {sec:'GOVERN',label:'Program',tabs:[['customer-problem','Customer problem'],['business-case','Business case'],['gap-analysis','Gap analysis'],['feasibility','Design feasibility'],['signoff','MRAT & FMEA'],['rollout','Pilot & rollout']]},
     {sec:'ADMIN',label:'Administration',tabs:[['settings','Settings'],['users','Users'],['roles','Roles & permissions'],['integrations','Integrations & API'],['security','Security & retention']]}
@@ -39,11 +39,22 @@
     if(existing&&existing.dataset.key===key&&app.firstElementChild===existing)return;
     if(existing)existing.remove();
     const bar=document.createElement('div');bar.className='hub-bar';bar.dataset.key=key;
-    bar.innerHTML=`<span class="hub-name">${h.label}</span><nav class="hub-tabs" aria-label="${h.label}">${h.tabs.map(([t,l])=>`<a href="#${t}" class="${t===active?'active':''}" ${t===active?'aria-current="page"':''}>${l}</a>`).join('')}</nav>`;
+    bar.innerHTML=`<nav class="hub-tabs" aria-label="${h.label}">${h.tabs.map(([t,l])=>`<a href="#${t}" class="${t===active?'active':''}" ${t===active?'aria-current="page"':''}>${l}</a>`).join('')}</nav>`;
     app.prepend(bar);
     const on=bar.querySelector('.active');if(on&&on.scrollIntoView)on.scrollIntoView({block:'nearest',inline:'nearest'});
   }
-  new MutationObserver(injectTabs).observe(document.querySelector('#app'),{childList:true});
+  /* Header breadcrumb: Section › Group › Page (replaces the old label above each title). */
+  const secNames={HOME:'Home',OPERATE:'Operate',CONFIGURE:'Configure',GOVERN:'Govern',ADMIN:'Admin'};
+  const extraNames={assistant:['Home','Ask Zero'],inbox:['Account','Inbox'],profile:['Account','My profile'],help:['Account','Help & release notes'],search:['Home','Search']};
+  function setCrumb(){
+    const crumb=document.querySelector('header .crumb');if(!crumb)return;
+    const r=(location.hash.slice(1).split('/')[0])||'overview',h=hubFor(r);let parts;
+    if(h){const c=chain(r),tab=h.tabs.find(([t])=>t===c.find(x=>h.tabs.some(([t])=>t===x)))||h.tabs[0];const page=document.querySelector('#app h1')?.textContent;parts=[secNames[h.sec],h.label];if(tab[1]!==h.label)parts.push(tab[1]);if(r!==tab[0]&&page)parts.push(page)}
+    else parts=extraNames[r]||['Home'];
+    crumb.innerHTML=parts.map((p,i)=>i===parts.length-1?`<b>${esc(p)}</b>`:`<span>${esc(p)}</span>`).join('<i>›</i>');
+  }
+  const injectAndCrumb=()=>{injectTabs();setCrumb()};
+  new MutationObserver(injectAndCrumb).observe(document.querySelector('#app'),{childList:true});window.addEventListener('hashchange',()=>setTimeout(setCrumb,60));
 
   /* One menu section open at a time. */
   document.addEventListener('toggle',e=>{

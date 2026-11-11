@@ -1,6 +1,6 @@
 /* Presentation branding for the customer demo. */
 function cleanDemoBranding(){
-  document.title='Zero · Operations Hub';
+  document.title='Zero Digital Defects';
   const brand=document.querySelector('#sidebar .brand');
   if(brand){
     const mark=brand.querySelector('em');
@@ -13,12 +13,12 @@ function cleanDemoBranding(){
   const workspaceCard=document.querySelector('#sidebar .workspace');
   if(workspaceCard)workspaceCard.remove();
   const crumb=document.querySelector('.crumb');
-  if(crumb)crumb.innerHTML='Manufacturing operations';
+  
   document.querySelectorAll('.eyebrow').forEach(el=>{el.textContent=el.textContent.replaceAll('OPERATIONS WORKSPACE','OPERATIONS').replaceAll('WORKSPACE','')});
   document.querySelectorAll('#sidebar .navlabel').forEach(el=>{if(el.textContent.trim()==='WORKSPACE')el.textContent='HOME'});
   const replacements=[
-    ['ZDD OPERATIONS HUB','ZERO OPERATIONS HUB'],
-    ['ZDD /','ZERO /'],
+    ['ZDD OPERATIONS HUB','ZERO DIGITAL DEFECTS'],['Operations Hub','Digital Defects'],
+    
     ['INTERACTIVE PROTOTYPE','OPERATIONS CONTROL CENTER'],
     ['Demo mode','Operations mode'],
     ['Demo data','Sample records'],
