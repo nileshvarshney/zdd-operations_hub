@@ -1,5 +1,7 @@
 /* Consistent line icons for the left navigation (24px grid, stroke = currentColor). */
 const navIconPaths={
+  architecture:'<rect x="3" y="3" width="6" height="5" rx="1"/><rect x="15" y="3" width="6" height="5" rx="1"/><rect x="9" y="16" width="6" height="5" rx="1"/><path d="M6 8v3h12V8M12 11v5"/>',
+  'master-data':'<ellipse cx="12" cy="6" rx="7" ry="2.5"/><path d="M5 6v6c0 1.4 3.1 2.5 7 2.5M19 6v4"/><circle cx="17.5" cy="16.5" r="4"/><path d="M17.5 14.5v2l1.3 1"/>',
   executive:'<path d="M3 21h18M5 21V10M10 21V5M15 21v-8M20 21V8"/>',
   assistant:'<path d="M4 5h16v11H9l-5 4z"/><path d="M9 10.5h.01M12 10.5h.01M15 10.5h.01"/>',
   inbox:'<path d="M3 13l2.5-8h13L21 13v6H3z"/><path d="M3 13h5l1.5 2.5h5L16 13h5"/>',

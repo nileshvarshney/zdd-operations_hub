@@ -5,7 +5,7 @@ This folder contains the static demo application for the ZDD end-to-end operatio
 ## Upload to GitHub
 
 1. Create a new GitHub repository.
-2. Upload all files in this folder, including `index.html`, the JavaScript and CSS files (including `icons.js`, `screens.css` and the three `screens-*.js` files), and `.nojekyll`.
+2. Upload all files in this folder, including `index.html`, the JavaScript and CSS files (including `icons.js`, `menu.js`, `menu.css`, `screens.css` and the `screens-*.js` files). Do not upload screenshots, and `.nojekyll`.
 3. Open **Settings → Pages**.
 4. Under **Build and deployment**, choose **Deploy from a branch**.
 5. Select the `main` branch and the `/ (root)` folder, then save.
@@ -26,7 +26,9 @@ The application uses simulated data for demonstration. It does not connect to SA
 - Source system health
 - Customer-facing process guide with small stage illustrations
 - Application setup screen with source, mapping, checkpoint, quality, AI and alarm configuration
-- Foldable, grouped left navigation with consistent line icons and a collapsed icon rail
+- Compact left menu: 11 items in 5 sections (one open at a time); related screens appear as tabs at the top of each page
+- Quick finder (Ctrl/⌘ K or /) to jump to any page, lot, alarm, issue or system; Ask Zero side panel from the header
+- Solution architecture screen mirroring the customer's numbered ZDD flow (components 1–10), plus a Master data screen
 - Simple semiconductor-wafer example explaining where the platform is used and what problem it solves
 - Live-data architecture explanation and TIBCO event-middleware note
 - Business case, gap analysis report, design feasibility, MRAT/FMEA sign-off, and pilot-to-production rollout pages

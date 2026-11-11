@@ -1,0 +1,6 @@
+# Never commit screenshots or browser-test output
+Screenshot*.png
+screenshot*.png
+*.screenshot.png
+.playwright-mcp/
+.DS_Store
